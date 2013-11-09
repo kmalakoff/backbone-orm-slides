@@ -1,0 +1,42 @@
+{
+  "name": "backbone-orm-website",
+  "version": "0.0.1",
+  "repository": {"type": "git", "url": "https://bitbucket.org/vidigami/backbone-orm-website.git"},
+  "scripts": {
+    "start": "grunt",
+    "test": "NODE_ENV=test mocha test/suite.coffee --compilers coffee:coffee-script --reporter spec"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+    "jade": "*",
+    "stylus": "*",
+    "nib": "*",
+    "markdown": "*",
+    "underscore": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-jade": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-cssmin": "*",
+    "mocha": "*",
+    "powerset": "0.0.x",
+    "backbone-orm": "*",
+    "backbone-sql": "*",
+    "backbone-mongo": "*",
+    "backbone-http": "*",
+    "backbone-rest": "*",
+    "underscore": "1.5.x",
+    "backbone": "1.1.x",
+    "moment": "2.0.x"
+  }
+}
