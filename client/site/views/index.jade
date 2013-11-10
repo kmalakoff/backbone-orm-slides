@@ -17,13 +17,10 @@ head
          Any section element inside of this container is displayed as a slide
       .slides
         include _introduction
-
-        section
-          h2
-
-        section
-          h1 THE END
-          h3 Let's look at a demo
+        include _why
+        include _goals
+        include _results
+        include _demo
 
     script(src="./js/vendor.js")
     script(src="./js/site.js")
