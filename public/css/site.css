@@ -4,6 +4,9 @@ body.invert{background-color:#8cc542;}
 body.invert .reveal{color:#fff8eb}
 body.invert h1,body.invert h2,body.invert h3,body.invert h4,body.invert h5,body.invert h6{color:#fff8eb}
 .reveal section img.plain{-webkit-box-shadow:none;box-shadow:none;background:none;border:none;margin:0 0 0 10px;padding:0}
+.reveal section strong{color:#268bd2}
 .reveal section .left{text-align:left}
 .reveal section .huge{font-size:5em}
 .reveal section table.left tr td:first-child{min-width:200px}
+.reveal section h1.fragment.zoom-in{height:0;overflow:hidden;}
+.reveal section h1.fragment.zoom-in.visible{height:240px}

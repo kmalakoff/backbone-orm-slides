@@ -1,34 +1,41 @@
 section
   h1 Why?
+  h3 Node has like a bazillion of them
 
 section
-  h1 Why not?
-  p ORMs must be easy, right?
-  p Almost every language has got one or more!
+  h3 There's something
+  h1 Missing
 
 section
-  h1 Seriously
-  p Node.js and Broswer MVC/MVVM frameworks are awesome inventions that really accelerate development, but there's a problem...
+  h2 Node ORM
+  h1.fragment.zoom-in What goes in between?
+  h2 Browser MV*
+//section
+//  h1 Why not?
+//  p ORMs must be easy, right?
+//  p Almost every language has got one or more!
+//
+//section
+//  h1 Seriously
+//  p Node.js and browser MVC/MVVM frameworks are awesome inventions that really accelerate development, but there's a problem...
+
+//section
+//  h2 They need to talk to each other
+
+//section
+//  p But without a standard API across browser and server, the "JavaScript Everywhere" promise breaks a little.
+//  h4 That's why there is Meteor
+//  h4 That's why there is Backbone-ORM
 
 section
-  h1 They need to talk to each other
-
-section
-  p But without a standard API across browser and server, the "JavaScript Everywhere" promise breaks a little.
-  h4 That's why there is Meteor
-  h4 That's why there is Backbone-ORM
+  h2 "JavaScript Everywhere"
+  h3 Let's do that
+  h3 With a
+    strong &nbsp;consistent&nbsp;
+    | API
 
 section
   h1 Backbone-ORM
-  h4 Client
-  pre
-    code.language-coffeescript.
-      class Project extends Backbone.Model
-        urlRoot: '/projects'
-        sync: require('backbone-http').sync(Project)
-
-      # Find all items with is_active = true
-      Project.find {is_active: true}, (err, projects) ->
 
   h4 Server
   pre
@@ -39,3 +46,17 @@ section
 
       # Find all items with is_active = true
       Project.find {is_active: true}, (err, projects) ->
+
+  .fragment
+    h4 Client
+    pre
+      code.language-coffeescript.
+        class Project extends Backbone.Model
+          urlRoot: '/projects'
+          sync: require('backbone-http').sync(Project)
+
+        # Find all items with is_active = true
+        Project.find {is_active: true}, (err, projects) ->
+
+    div
+
