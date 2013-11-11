@@ -1,7 +1,13 @@
-Step 1 - Server
+Step 0 - Setup
 --------
 
-- start with index.html
+nodemon app.js
+coffee -w -c app.coffee
+
+- start with app.coffee and index.html
+
+Step 1 - Server
+--------
 
 - urlRoot
 - async.each [0..9], ((index, callback) -> Project.findOrCreate {index: index, name: "Project #{index}"}, callback), (err) ->
@@ -9,9 +15,7 @@ Step 1 - Server
 Step 1 - Client
 --------
 
-- index.html
 - browserify -r backbone-orm -r backbone-http -r backbone -r async -r knockback > client-bundle.js
-- coffee -w -c app.coffee
 
 - same origin - host index.html from the server
 
@@ -43,16 +47,19 @@ Step 4
       @projects = kb.collectionObservable(new Backbone.Collection())
       Project.cursor({$limit: 6}).sort('name').toModels (err, models) => @projects.collection().reset(models)
 
+    onSave: (vm) -> vm.model().save ->
+
 - inject view model
   <div class='container' kb-inject="AppViewModel">
     <table class='table'>
       <thead>
-        <tr><th>Name</th><th>Index</th></tr>
+        <tr><th>Index</th><th>Name</th><th></th></tr>
       </thead>
       <tbody data-bind="foreach: projects">
         <tr>
-          <td data-bind="text: name"></td>
+          <td><input data-bind="value: name"></input></td>
           <td data-bind="text: index"></td>
+          <td><button class='btn' data-bind="click: $parent.onSave">Save</button></td>
         </tr>
       </tbody>
     </table>

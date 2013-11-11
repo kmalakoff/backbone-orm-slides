@@ -11,7 +11,11 @@ if window?
 
 else
   express = require 'express'
-  RestController = require 'backbone-rest'
+  app = express()
+  app.use express.bodyParser()
+  app.use express.static(__dirname)
+  app.get '/', (req, res) -> res.sendfile('./index.html')
+  app.listen(3000)
 
   # in memory
   class Project extends Backbone.Model
@@ -32,16 +36,13 @@ else
     sync: require('backbone-sql').sync(Project)
   # put around bootstrap first time: Project.resetSchema ->
 
-  app = express()
-
-  app.use express.static(__dirname)
-  app.get '/', (req, res) -> res.sendfile('./index.html')
-
+  RestController = require 'backbone-rest'
   new RestController app, {model_type: Project, route: '/projects'}
-  app.listen(3000)
 
-  # bootstrap
-  async.each [1..9], ((index, callback) -> Project.findOrCreate {index: index, name: "Project #{index}"}, callback), (err) ->
+  bootstrap = (index, callback) ->
+    Project.findOrCreate {index: index, name: "Project #{index}"}, callback
+
+  async.each [0..9], bootstrap, ->
 
     # find
     Project.find (err, models) -> console.log model.get('name') for model in models
