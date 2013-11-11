@@ -40,17 +40,14 @@
               </code></pre>
           <h4>Mongoose</h4>
           <pre><code class="language-coffeescript">
-              var mongoose = require('mongoose');
-              mongoose.connect('mongodb://localhost/test');
-              var db = mongoose.connection;
-              
-              var kittySchema = mongoose.Schema({name: String});</code></pre>
+              var kittySchema = mongoose.Schema({name: String});
+              var Kitten = mongoose.model('Kitten', kittySchema);
+              var fluffy = new Kitten({ name: 'fluffy' });
+              </code></pre>
           <h4>Backbone-Relational</h4>
           <pre><code class="language-coffeescript">
               Zoo = Backbone.RelationalModel.extend({
-                relations: [{
-                  type: Backbone.HasMany,
-                  key: 'animals',
+                relations: [{type: Backbone.HasMany, key: 'animals',
                   relatedModel: 'Animal',
                 }]
               });
