@@ -13,7 +13,7 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON('package.json')
 
     clean:
-      assets: ['public/']
+      assets: ['public/**/*']
 
     copy:
       vendor_assets: {files: [{expand: true, cwd: 'client/vendor/assets', src: '**', dest: 'public'}]}
