@@ -1,4 +1,4 @@
-section
+section.invert
   h1 The Results
   h3 AKA: ORMs are harder than they look
 
@@ -15,16 +15,20 @@ section
   h1 We are tired campers!
   //.left
   //  p Many long days and late nights filled with epiphanies: "So that's why A/B/C did X/Y/Z"
+  //  p Things like: What does a collection mean now in a *to many relation? What do we do when adding items when it's not loaded?
+  //  p What do we do when we set relations before saving them?
+  //  p Is it ok to do some db operations in the background? Or should they be explicit? (it depends, both is the answer)
 
 section
   h1 We are thankful campers!
   h3 Thank you:
-  p Backbone.js for a great Model layer
-  p Knex for a great SQL-mulivariant driver
-  p MongoDB for an amazing query syntax
-  p CouchDB for url-based queries
-  p Rails and Django for mature ORMs
-  p You, because you're awesome
+  ul
+    li Backbone.js for a great Model layer
+    li Knex for a great SQL-mulivariant driver
+    li MongoDB for an amazing query syntax
+    li CouchDB for url-based queries
+    li Rails and Django for mature ORMs
+    li You, for listening. And being awesome
 
 section
   h1 We are open sourcing campers!
