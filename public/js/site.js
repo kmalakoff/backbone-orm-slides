@@ -32,8 +32,13 @@
       }
     };
     syncBody(Reveal.getCurrentSlide());
-    return Reveal.addEventListener('slidechanged', function(event) {
+    Reveal.addEventListener('slidechanged', function(event) {
       return syncBody(event.currentSlide);
+    });
+    return $(document).on('keyup', function(e) {
+      if (e.keyCode === 220) {
+        return $('.hidden').toggle();
+      }
     });
   });
 

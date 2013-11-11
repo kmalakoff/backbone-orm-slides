@@ -30,3 +30,8 @@ $ ->
 
   Reveal.addEventListener 'slidechanged', (event) ->
     syncBody(event.currentSlide)
+
+  $(document).on 'keyup', (e) ->
+    if e.keyCode is 220
+      $('.hidden').toggle()
+

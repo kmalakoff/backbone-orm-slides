@@ -8,7 +8,8 @@ section
     code.language-coffeescript.
       Project.find {name: {$ne: 'Bob'}}, (err, models) ->
 
-  // Designed for JavaScript first, we consider this the gold standard of query syntaxs in JS
+  .hidden
+    p Designed for JavaScript first, we consider this the gold standard of query syntaxes in JS
 
 section
   h3 Fully Compatible with Backbone.js, but with Relationships!
@@ -31,9 +32,10 @@ section
   h3 Rails / Django style query chaining
   pre.fragment.zoom-in
     code.language-coffeescript.
-      Project.cursor().limit(3).toModels (err, models) ->
+      Project.cursor().limit(3).include('tasks').toModels (err, models) ->
 
-  // include relations in query, etc
+  .hidden
+    p
 
 section
   h2 Trivial REST API generation
@@ -76,14 +78,8 @@ section
     h2 That consistent API
     h4 Across client and server
 
-//section
-//  h1 The Basics
-//  .left
-//    p Provide an intuitive query langauge: inspired by the MongoDB gold standard
-//    p Must be Node-y: callback-based queries and promise-based cursors - we got'em!
-//    p Low learning curve: consistent API across Browser and Node.js
-//    p Backbone.js Model and Collection compatible with built-in relationships: we use Knockback.js
-//    p Trivial JSON API generation: raw JSON or DSL to customize
+  .hidden
+    p So everything we want to do in regards to data retrieval uses the same API
 
 section
   h1 Above and Beyond

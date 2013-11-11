@@ -27,7 +27,8 @@ Step 1 - In memory Store
 
 Let's set up an in-memory store on both sides to demonstrate the query syntax by writing to console.log
 
-First, let's require what we need (backbone and async). Next, let's define a Model with an in memory sync.To make it useful, let's bootstrap some data using async.
+First, let's require what we need (backbone and async). Next, let's define a Model with an in memory sync.
+To make it useful, let's bootstrap some data using async.
 
 And finally, let's start querying the data.
 
@@ -67,6 +68,7 @@ We use Knockback.js so let's add it to the bundle.
 browserify -r backbone-orm -r backbone-http -r backbone -r async -r knockback > client-bundle.js
 ```
 
-We'll copy paste some HTML (it'll take to long to write correctly) to inject a ViewModel using Angular-like functionality. And define a ViewModel on the client using the same find query and with a save method.
+We'll copy paste some HTML (it'll take to long to write correctly) to inject a ViewModel using Angular-like functionality.
+And define a ViewModel on the client using the same find query and with a save method.
 
 Refresh, show the table, edit a name, and save it. It should just work ;-P (famous last words)
