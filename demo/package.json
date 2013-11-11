@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "coffee-script": "*",
-    "express": "~3.4.4",
+    "express": "3.3.x",
     "nodemon": "*",
 
     "backbone-orm": "*",
