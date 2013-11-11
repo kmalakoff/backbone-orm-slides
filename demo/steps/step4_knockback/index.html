@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+  <title>BackboneORM Demo</title>
+  <script type="text/javascript" src="client-bundle.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class='container' kb-inject="AppViewModel">
+    <table class='table'>
+      <thead>
+        <tr><th>Name</th><th>Index</th></tr>
+      </thead>
+      <tbody data-bind="foreach: projects">
+        <tr>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: index"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
