@@ -147,11 +147,11 @@
         <section>
           <h2>Node-y callbacks everywhere</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
-              Project.save (err) ->
+              project.save (err) ->
+              project.destroy (err) ->
               
-              Project.destroy (err) ->
-              
-              Project.find (err, models) ->
+              Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+              Project.cursor().limit(3).toModels (err, models) ->
               </code></pre>
           <div class="fragment">
             <h2>That consistent API</h2>
@@ -182,7 +182,7 @@
               </code></pre>
         </section>
         <section>
-          <h2>Batch processing of a database from the Browser</h2>
+          <h2>Iterate through a database in the Browser</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.each {created_at: {$lte: new Date()}},
                 ((model, callback) -> callback()),
@@ -192,14 +192,14 @@
         <section>
           <h2>Node.js stream support</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
-              Project.stream()
+              Project.stream({created_at: {$lte: new Date()}})
                 .pipe(histogram)
                 .on 'finish', ->
                 </code></pre>
         </section>
         <section>
           <h2>Relationships in MongoDB</h2>
-          <h3>Well, it came for free</h3>
+          <h3>Well, why not? It came for free!</h3>
         </section>
         <section>
           <h1>The Results</h1>

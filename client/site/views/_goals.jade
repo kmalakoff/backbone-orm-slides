@@ -64,11 +64,11 @@ section
   h2 Node-y callbacks everywhere
   pre.fragment.zoom-in
     code.language-coffeescript.
-      Project.save (err) ->
+      project.save (err) ->
+      project.destroy (err) ->
 
-      Project.destroy (err) ->
-
-      Project.find (err, models) ->
+      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+      Project.cursor().limit(3).toModels (err, models) ->
 
   .fragment
     h2 That consistent API
@@ -99,7 +99,7 @@ section
       Project.cursor().limit(3).toJSON (err, json) ->
 
 section
-  h2 Batch processing of a database from the Browser
+  h2 Iterate through a database in the Browser
   pre.fragment.zoom-in
     code.language-coffeescript.
       Project.each {created_at: {$lte: new Date()}},
@@ -110,10 +110,10 @@ section
   h2 Node.js stream support
   pre.fragment.zoom-in
     code.language-coffeescript.
-      Project.stream()
+      Project.stream({created_at: {$lte: new Date()}})
         .pipe(histogram)
         .on 'finish', ->
 
 section
   h2 Relationships in MongoDB
-  h3 Well, it came for free
+  h3 Well, why not? It came for free!
