@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>BackboneORM</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="./images/favicon-48x48.png">
+  <link rel="stylesheet" href="./css/vendor.css">
+  <link rel="stylesheet" href="./css/site.css">
+  <body>
+    <div class="reveal"><!--
+      <Any>section element inside of this container is displayed as a slide</Any>-->
+      <div class="slides">
+        <section class="first invert">
+          <h1 class="huge">Backbone-ORM</h1>
+          <h3>Yet another ORM<span class="fragment">...?</span></h3>
+        </section>
+        <section>
+          <h1>Well, yes.</h1>
+          <h3>But it's pretty cool</h3>
+        </section>
+        <section>
+          <h1>Why?</h1>
+          <h3>Node has like a bazillion of them</h3>
+        </section>
+        <section>
+          <h3>There's something</h3>
+          <h1>Missing</h1>
+        </section>
+        <section>
+          <h2>Node ORM</h2>
+          <h1 class="fragment zoom-in">What goes in between?</h1>
+          <h2>Browser MV*</h2>
+        </section>
+        <!--section-->
+        <!--  h1 Why not?-->
+        <!--  p ORMs must be easy, right?-->
+        <!--  p Almost every language has got one or more!-->
+        <!---->
+        <!--section-->
+        <!--  h1 Seriously-->
+        <!--  p Node.js and browser MVC/MVVM frameworks are awesome inventions that really accelerate development, but there's a problem...-->
+        <!--section-->
+        <!--  h2 They need to talk to each other-->
+        <!--section-->
+        <!--  p But without a standard API across browser and server, the "JavaScript Everywhere" promise breaks a little.-->
+        <!--  h4 That's why there is Meteor-->
+        <!--  h4 That's why there is Backbone-ORM-->
+        <section>
+          <h2>"JavaScript Everywhere"</h2>
+          <h3>Let's do that</h3>
+          <h3>With a<strong>&nbsp;consistent&nbsp;</strong>API</h3>
+        </section>
+        <section>
+          <h1>Backbone-ORM</h1>
+          <h4>Server</h4>
+          <pre><code class="language-coffeescript">
+              class Project extends Backbone.Model
+                urlRoot: 'mongodb://localhost:27017/projects'
+                sync: require('backbone-mongo').sync(Project)
+                
+              # Find all items with is_active = true
+              Project.find {is_active: true}, (err, projects) ->
+              </code></pre>
+          <div class="fragment">
+            <h4>Client</h4>
+            <pre><code class="language-coffeescript">
+                class Project extends Backbone.Model
+                  urlRoot: '/projects'
+                  sync: require('backbone-http').sync(Project)
+                  
+                # Find all items with is_active = true
+                Project.find {is_active: true}, (err, projects) ->
+                </code></pre>
+            <div></div>
+          </div>
+        </section>
+        <!--include _others_table-->
+        <section>
+          <h1>Design Goals</h1>
+          <h3>AKA: biting the bullet</h3>
+        </section>
+        <section>
+          <h1>The Basics</h1>
+          <div class="left">
+            <p>Provide an intuitive query langauge: inspired by the MongoDB gold standard</p>
+            <p>Must be Node-y: callback-based queries and promise-based cursors - we got'em!</p>
+            <p>Low learning curve: consistent API across Browser and Node.js</p>
+            <p>Backbone.js Model and Collection compatible with built-in relationships: we use Knockback.js</p>
+            <p>Trivial JSON API generation: raw JSON or DSL to customize</p>
+          </div>
+        </section>
+        <section>
+          <h1>Above and Beyond</h1>
+          <div class="left">
+            <p>URL-based query syntax: debug JSON queries on the search bar: wanna debug queries without programming?</p>
+            <p>Both JSON and Model interfaces for JSON-only APIs when a full relation, model-based ORM is overkill</p>
+            <p>Batch-based, browser-side processing of server models: wanna generate a report in the Browser?</p>
+            <p>Node.js-based stream support: wanna stream to JSON from Postgres?</p>
+            <p>Relationships in MongoDB: well, it came for free</p>
+            <p>In Memory store: great for config file queries</p>
+          </div>
+        </section>
+        <section>
+          <h1>The Results</h1>
+          <h3>AKA: ORMs are harder than they look</h3>
+        </section>
+        <section>
+          <h1>We are happy campers! ...now</h1>
+          <div class="left">
+            <p>We seamlessly transition between developing for the Browser and Node.js (and sometimes both!)</p>
+            <p>We can take advantage of the great extensions and frameworks around Backbone.js</p>
+            <p>We can mix-and-match databases to choose the best tool for the job</p>
+            <p>We focus on solving problems not memorizing APIs</p>
+          </div>
+        </section>
+        <section>
+          <h1>We are tired campers!</h1>
+          <div class="left">
+            <p>Many long days and late nights filled with epiphonies: "So that's why A/B/C did X/Y/Z"</p>
+          </div>
+        </section>
+        <section>
+          <h1>We are thankful campers!</h1>
+          <h3>Thank you:</h3>
+          <p>Backbone.js for a great Model layer</p>
+          <p>Knex for a great SQL-mulivariant driver</p>
+          <p>MongoDB for an amazing query syntax</p>
+          <p>CouchDB for url-based queries</p>
+          <p>Rails and Django for mature ORMs</p>
+        </section>
+        <section>
+          <h1>We are open sourcing campers!</h1>
+          <table class="left">
+            <tr>
+              <td>backbone-orm</td>
+              <td>(b/n)</td>
+              <td>base library that extends Backbone.js and provides an in-memory store</td>
+            </tr>
+            <tr>
+              <td>backbone-http</td>
+              <td>(b/n)</td>
+              <td>an HTTP interface for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>backbone-rest</td>
+              <td>(n)</td>
+              <td>a RESTful controller for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>backbone-mongo</td>
+              <td>(n)</td>
+              <td>MongoDB storage for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>backbone-sql</td>
+              <td>(n)</td>
+              <td>PostgreSQL, MySQL, and SQLite3 storage for BackboneORM</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h1>Oh yeah</h1>
+          <div class="fragment"><img src="/images/meme.png">
+            <h3>(don't hate us)</h3>
+          </div>
+        </section>
+        <section>
+          <h3>Let's see some cool stuff</h3>
+        </section>
+      </div>
+    </div>
+    <script src="./js/vendor.js"></script>
+    <script src="./js/site.js"></script>
+  </body>
+</head>
