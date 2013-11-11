@@ -32,7 +32,7 @@ To make it useful, let's bootstrap some data using async.
 
 And finally, let's start querying the data.
 
-- find (same as all without query parameters)
+- find (without any parameters it's the same as .all())
 - $limit, $offset, $sort
 
 Show on the server and then browserify and show in the browser.
