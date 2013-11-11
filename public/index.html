@@ -9,10 +9,9 @@
   <link rel="stylesheet" href="./css/vendor.css">
   <link rel="stylesheet" href="./css/site.css">
   <body>
-    <div class="reveal"><!--
-      <Any>section element inside of this container is displayed as a slide</Any>-->
+    <div class="reveal">
       <div class="slides">
-        <section>
+        <section class="first invert">
           <h1>Backbone-ORM</h1>
           <h3>Yet another ORM<span class="fragment">...?</span></h3>
         </section>
@@ -21,17 +20,57 @@
           <h3>But it's pretty cool</h3>
         </section>
         <section>
+          <h1>Why?</h1>
+        </section>
+        <section>
+          <h1>Why not?</h1>
+          <p>ORMs must be easy, right?</p>
+          <p>Almost every language has got one or more!</p>
+        </section>
+        <section>
+          <h1>Seriously</h1>
+          <p>Node.js and Broswer MVC/MVVM frameworks are awesome inventions that really accelerate development, but there's a problem...</p>
+        </section>
+        <section>
+          <h1>They need to talk to each other</h1>
+        </section>
+        <section>
+          <p>But without a standard API across browser and server, the "JavaScript Everywhere" promise breaks a little.</p>
+          <h4>That's why there is Meteor</h4>
+          <h4>That's why there is Backbone-ORM</h4>
+        </section>
+        <section>
+          <h1>Backbone-ORM</h1>
+          <h4>Client</h4>
+          <pre><code class="language-coffeescript">
+              class Project extends Backbone.Model
+                urlRoot: '/projects'
+                sync: require('backbone-http').sync(Project)
+                
+              # Find all items with is_active = true
+              Project.find {is_active: true}, (err, projects) ->
+              </code></pre>
+          <h4>Server</h4>
+          <pre><code class="language-coffeescript">
+              class Project extends Backbone.Model
+                urlRoot: 'mongodb://localhost:27017/projects'
+                sync: require('backbone-mongo').sync(Project)
+                
+              # Find all items with is_active = true
+              Project.find {is_active: true}, (err, projects) -></code></pre>
+        </section>
+        <section>
           <h1>One more thing</h1><img src="/images/meme.png" class="fragment">
           <h3 class="fragment">(don't hate us)</h3>
         </section>
         <section>
           <h3>Let's see some cool stuff</h3>
         </section>
-        <section><a href="http://vidigami.github.io/backbone-orm"><img src="./images/backbone-orm-logo-large.png"></a>
+        <section class="invert"><a href="http://vidigami.github.io/backbone-orm"><img src="./images/backbone-orm-logo-large.png" class="plain"></a>
           <h4>A polystore ORM for Node.js and the browser</h4>
           <h4>Learn more: <a ref='http://vidigami.github.io/backbone-orm'>vidigami.github.io/backbone-orm</a></h4><br>
           <h4>Brought to you by Kevin Malakoff and Gwilym Humphreys</h4>
-          <h4>We hope you give it a try!</h4><a href="https://www.vidigami.com"><span>www.vidigami.com</span><img src="./images/vidigami-lizard.png"></a>
+          <h4>We hope you give it a try!</h4><a href="https://www.vidigami.com"><span>www.vidigami.com</span><img src="./images/vidigami-lizard.png" class="plain"></a>
         </section>
       </div>
     </div>

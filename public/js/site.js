@@ -1,6 +1,15 @@
 (function() {
   $(function() {
-    return Reveal.initialize({
+    var syncBody;
+    syncBody = function(ele) {
+      if ($(ele).hasClass('invert')) {
+        return $('body').addClass('invert');
+      } else {
+        return $('body').removeClass('invert');
+      }
+    };
+    syncBody($('section.first'));
+    Reveal.initialize({
       controls: true,
       progress: true,
       history: true,
@@ -22,6 +31,10 @@
           async: true
         }
       ]
+    });
+    return Reveal.addEventListener('slidechanged', function(event) {
+      console.log(event.currentSlide, event.indexh, event.indexv);
+      return syncBody(event.currentSlide);
     });
   });
 

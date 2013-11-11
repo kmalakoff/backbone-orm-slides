@@ -1,6 +1,14 @@
 
 $ ->
 
+  syncBody = (ele) ->
+    if $(ele).hasClass('invert')
+      $('body').addClass('invert')
+    else
+      $('body').removeClass('invert')
+
+  syncBody($('section.first'));
+
   # Full list of configuration options available here:
   # https://github.com/hakimel/reveal.js#configuration
   Reveal.initialize({
@@ -19,3 +27,9 @@ $ ->
       { src: 'plugin/notes/notes.js', async: true }
     ]
   });
+
+
+  Reveal.addEventListener 'slidechanged', (event) ->
+    console.log event.currentSlide, event.indexh, event.indexv
+
+    syncBody(event.currentSlide)
