@@ -5,7 +5,39 @@
 </section>
 <section>
   <h1>Yeah, with like a bazillion APIs</h1>
-  <h3 class="fragment">and</h3>
+</section>
+<section>
+  <h4>Sequelize</h4>
+  <pre><code class="language-coffeescript">
+      var Foo = sequelize.define('Foo', { /* attributes */}, {
+        classMethods: {
+          method1: function(){ return 'smth' }
+        },
+        instanceMethods: {
+          method2: function() { return 'foo' }
+        }
+      });
+      </code></pre>
+  <h4>Mongoose</h4>
+  <pre><code class="language-coffeescript">
+      var mongoose = require('mongoose');
+      mongoose.connect('mongodb://localhost/test');
+      var db = mongoose.connection;
+      
+      var kittySchema = mongoose.Schema({name: String});</code></pre>
+  <h4>Backbone-Relational</h4>
+  <pre><code class="language-coffeescript">
+      Zoo = Backbone.RelationalModel.extend({
+        relations: [{
+          type: Backbone.HasMany,
+          key: 'animals',
+          relatedModel: 'Animal',
+        }]
+      });
+      </code></pre>
+</section>
+<section>
+  <h1>and</h1>
 </section>
 <section>
   <h3>There's something</h3>
