@@ -4,7 +4,41 @@ section
 
 section
   h1 Yeah, with like a bazillion APIs
-  h3.fragment and
+
+section
+  h4 Sequelize
+  pre
+    code.language-coffeescript.
+      var Foo = sequelize.define('Foo', { /* attributes */}, {
+        classMethods: {
+          method1: function(){ return 'smth' }
+        },
+        instanceMethods: {
+          method2: function() { return 'foo' }
+        }
+      });
+
+  h4 Mongoose
+  pre
+    code.language-coffeescript.
+      var mongoose = require('mongoose');
+      mongoose.connect('mongodb://localhost/test');
+      var db = mongoose.connection;
+
+      var kittySchema = mongoose.Schema({name: String});
+  h4 Backbone-Relational
+  pre
+    code.language-coffeescript.
+      Zoo = Backbone.RelationalModel.extend({
+        relations: [{
+          type: Backbone.HasMany,
+          key: 'animals',
+          relatedModel: 'Animal',
+        }]
+      });
+
+section
+  h1 and
 
 section
   h3 There's something
