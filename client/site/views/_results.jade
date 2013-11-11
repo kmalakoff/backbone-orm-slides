@@ -1,4 +1,4 @@
-section
+section.invert
   h1 The Results
   h3 AKA: ORMs are harder than they look
 
@@ -14,17 +14,21 @@ section
 section
   h1 We are tired campers!
   //.left
-  //  p Many long days and late nights filled with epiphanies: "So that's why A/B/C did X/Y/Z"
   //  p I wrote intial mongodb version and thought I was half way. More like a quarter
+  //  p Many long days and late nights filled with epiphanies: "So that's why A/B/C did X/Y/Z"
+  //  p Things like: What does a collection mean now in a *to many relation? What do we do when adding items when it's not loaded?
+  //  p What do we do when we set relations before saving them?
+  //  p Is it ok to do some db operations in the background? Or should they be explicit? (it depends, both is the answer)
 
 section
   h1 We are thankful campers!
   h3 Thank you:
-  p Backbone.js for a great Model layer
-  p Knex for a great SQL-mulivariant driver
-  p MongoDB for an amazing query syntax
-  p CouchDB for url-based queries
-  p Rails and Django for mature ORMs
+  ul
+    li Backbone.js for a great Model layer
+    li Knex for a great SQL-mulivariant driver
+    li MongoDB for an amazing query syntax
+    li CouchDB for url-based queries
+    li Rails and Django for mature ORMs
 
 section
   h1 We are open sourcing campers!
@@ -35,12 +39,12 @@ section
       td Base library that provides an in-memory store
     tr
       td
-        h4 backbone-http
-      td An HTTP interface
-    tr
-      td
         h4 backbone-rest
       td A RESTful controller
+    tr
+      td
+        h4 backbone-http
+      td An HTTP interface
     tr
       td
         h4 backbone-mongo

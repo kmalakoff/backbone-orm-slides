@@ -1,4 +1,4 @@
-section
+section.invert
   h1 Design Goals
   h3 AKA: biting the bullet
 
@@ -8,11 +8,7 @@ section
     code.language-coffeescript.
       Project.find {name: {$ne: 'Bob'}}, (err, models) ->
 
-section
-  h3 Rails / Django style query chaining
-  pre.fragment.zoom-in
-    code.language-coffeescript.
-      Project.cursor().limit(3).toModels (err, models) ->
+  // Designed for JavaScript first, we consider this the gold standard of query syntaxs in JS
 
 section
   h3 Fully Compatible with Backbone.js, but with Relationships!
@@ -30,6 +26,12 @@ section
         schema:
           tasks: -> ['hasMany', Tasks]
         sync: require('backbone-orm')(Project)
+
+section
+  h3 Rails / Django style query chaining
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.cursor().limit(3).toModels (err, models) ->
 
 section
   h2 Trivial REST API generation
@@ -64,15 +66,13 @@ section
   h2 Node-y callbacks everywhere
   pre.fragment.zoom-in
     code.language-coffeescript.
-      project.save (err) ->
-      project.destroy (err) ->
+      Project.find {name: 'Bob'}, (err, project) ->
 
-      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
-      Project.cursor().limit(3).toModels (err, models) ->
+        project.get 'tasks', (err, tasks) ->
 
   .fragment
     h2 That consistent API
-    h4 ACross client and server
+    h4 Across client and server
 
 //section
 //  h1 The Basics
@@ -99,20 +99,20 @@ section
       Project.cursor().limit(3).toJSON (err, json) ->
 
 section
-  h2 Iterate through a server database in the Browser
-  pre.fragment.zoom-in
-    code.language-coffeescript.
-      Project.each {created_at: {$lte: new Date()}},
-        ((model, callback) -> callback()),
-        (err) ->
-
-section
   h2 Node.js streams
   pre.fragment.zoom-in
     code.language-coffeescript.
       Project.stream({created_at: {$lte: new Date()}})
         .pipe(histogram)
         .on 'finish', ->
+
+section
+  h2 Iterate through a server database in the Browser
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.each {created_at: {$lte: new Date()}},
+        ((model, callback) -> callback()),
+        (err) ->
 
 section
   h2 Relationships in MongoDB
