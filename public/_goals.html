@@ -4,27 +4,72 @@
   <h3>AKA: biting the bullet</h3>
 </section>
 <section>
-  <ul>
-    <li>
-      <h3>MongoDB inspired query langauge</h3>
-    </li>
-    <li>
-      <h3 class="fragment">Rails / Django style query chaining</h3>
-    </li>
-    <li>
-      <h3 class="fragment">Backbone.js Models and Collections</h3>
-    </li>
-  </ul>
+  <h3>MongoDB inspired query langauge</h3>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+      </code></pre>
+</section>
+<section>
+  <h3>Rails / Django style query chaining</h3>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.cursor().limit(3).toModels (err, models) ->
+      </code></pre>
+</section>
+<section>
+  <h3>Fully Compatible with Backbone.js, but with Relationships!</h3>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      class Task extends Backbone.Model
+        urlRoot: '/tasks'
+        schema:
+          project: -> ['belongsTo', Project]
+        sync: require('backbone-orm')(Task)
+        </code><code class="language-coffeescript">
+      class Project extends Backbone.Model
+        urlRoot: '/projects'
+        schema:
+          tasks: -> ['hasMany', Tasks]
+        sync: require('backbone-orm')(Project)
+        </code></pre>
+</section>
+<section>
+  <h2>Trivial REST API generation</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      class Project extends Backbone.Model
+        urlRoot: '/projects'
+        sync: require('backbone-orm')(Project)
+        
+      new RestController app, {
+        model_type: Project
+        route: '/projects'
+      }
+      </code></pre>
+  <h4 class="fragment">With super flexible templates</h4>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      new RestController app, {
+        model_type: Project
+        route: '/projects'
+        templates:
+          show:
+            $select: ['id', 'name']
+          show_with_tasks:
+            $select: ['id', 'name']
+            tasks: {$select: ['id', 'name']}
+        default_template: 'show'
+      }
+      </code></pre>
 </section>
 <section>
   <h2>Node-y callbacks everywhere</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      project.save (err) ->
+      project.destroy (err) ->
+      
+      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+      Project.cursor().limit(3).toModels (err, models) ->
+      </code></pre>
   <div class="fragment">
     <h2>That consistent API</h2>
-    <h4>Across client and server</h4>
-  </div>
-  <div class="fragment">
-    <h2>Trivial REST API generation</h2>
-    <h4>With super flexible templates</h4>
+    <h4>ACross client and server</h4>
   </div>
 </section>
 <!--section-->
@@ -37,11 +82,36 @@
 <!--    p Trivial JSON API generation: raw JSON or DSL to customize-->
 <section>
   <h1>Above and Beyond</h1>
-  <!--.fragment.left-->
-  <!--  p URL-based query syntax: debug JSON queries on the search bar-->
-  <!--  p Both JSON and Model interfaces for JSON-only APIs when a full relation, model-based ORM is overkill-->
-  <!--  p Batch-based, browser-side processing of server models: wanna generate a report in the Browser?-->
-  <!--  p Node.js-based stream support: wanna stream to JSON from Postgres?-->
-  <!--  p Relationships in MongoDB: well, it came for free-->
-  <!--  p In Memory store: great for config file queries-->
+</section>
+<section>
+  <h2>URL-based query syntax</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      http://localhost:3000/projects?$limit=100&$offset=1000
+      </code></pre>
+</section>
+<section>
+  <h2>Raw JSON interface</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.cursor().limit(3).toJSON (err, json) ->
+      </code></pre>
+</section>
+<section>
+  <h2>Iterate through a server database in the Browser</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.each {created_at: {$lte: new Date()}},
+        ((model, callback) -> callback()),
+        (err) ->
+        </code></pre>
+</section>
+<section>
+  <h2>Node.js streams</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.stream({created_at: {$lte: new Date()}})
+        .pipe(histogram)
+        .on 'finish', ->
+        </code></pre>
+</section>
+<section>
+  <h2>Relationships in MongoDB</h2>
+  <h3>Well, why not? It came for free!</h3>
 </section>

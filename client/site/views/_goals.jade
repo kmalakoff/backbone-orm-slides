@@ -3,22 +3,76 @@ section.invert
   h3 AKA: biting the bullet
 
 section
-  ul
-    li
-      h3 MongoDB inspired query langauge
-    li
-      h3.fragment Rails / Django style query chaining
-    li
-      h3.fragment Backbone.js Models and Collections
+  h3 MongoDB inspired query langauge
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+
+section
+  h3 Rails / Django style query chaining
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.cursor().limit(3).toModels (err, models) ->
+
+section
+  h3 Fully Compatible with Backbone.js, but with Relationships!
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      class Task extends Backbone.Model
+        urlRoot: '/tasks'
+        schema:
+          project: -> ['belongsTo', Project]
+        sync: require('backbone-orm')(Task)
+
+    code.language-coffeescript.
+      class Project extends Backbone.Model
+        urlRoot: '/projects'
+        schema:
+          tasks: -> ['hasMany', Tasks]
+        sync: require('backbone-orm')(Project)
+
+section
+  h2 Trivial REST API generation
+
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      class Project extends Backbone.Model
+        urlRoot: '/projects'
+        sync: require('backbone-orm')(Project)
+
+      new RestController app, {
+        model_type: Project
+        route: '/projects'
+      }
+
+  h4.fragment With super flexible templates
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      new RestController app, {
+        model_type: Project
+        route: '/projects'
+        templates:
+          show:
+            $select: ['id', 'name']
+          show_with_tasks:
+            $select: ['id', 'name']
+            tasks: {$select: ['id', 'name']}
+        default_template: 'show'
+      }
 
 section
   h2 Node-y callbacks everywhere
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      project.save (err) ->
+      project.destroy (err) ->
+
+      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
+      Project.cursor().limit(3).toModels (err, models) ->
+
   .fragment
     h2 That consistent API
-    h4 Across client and server
-  .fragment
-    h2 Trivial REST API generation
-    h4 With super flexible templates
+    h4 ACross client and server
 
 //section
 //  h1 The Basics
@@ -31,10 +85,35 @@ section
 
 section
   h1 Above and Beyond
-  //.fragment.left
-  //  p URL-based query syntax: debug JSON queries on the search bar
-  //  p Both JSON and Model interfaces for JSON-only APIs when a full relation, model-based ORM is overkill
-  //  p Batch-based, browser-side processing of server models: wanna generate a report in the Browser?
-  //  p Node.js-based stream support: wanna stream to JSON from Postgres?
-  //  p Relationships in MongoDB: well, it came for free
-  //  p In Memory store: great for config file queries
+
+section
+  h2 URL-based query syntax
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      http://localhost:3000/projects?$limit=100&$offset=1000
+
+section
+  h2 Raw JSON interface
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.cursor().limit(3).toJSON (err, json) ->
+
+section
+  h2 Iterate through a server database in the Browser
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.each {created_at: {$lte: new Date()}},
+        ((model, callback) -> callback()),
+        (err) ->
+
+section
+  h2 Node.js streams
+  pre.fragment.zoom-in
+    code.language-coffeescript.
+      Project.stream({created_at: {$lte: new Date()}})
+        .pipe(histogram)
+        .on 'finish', ->
+
+section
+  h2 Relationships in MongoDB
+  h3 Well, why not? It came for free!

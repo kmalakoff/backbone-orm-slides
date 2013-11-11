@@ -25,7 +25,7 @@ browserify -r backbone-orm -r backbone-http -r backbone -r async > client-bundle
 Create a client bundle (with Knockback)
 
 ```
-browserify -r backbone-orm -r backbone-http -r backbone -r async -r knockback -r knockout > client-bundle.js
+browserify -r backbone-orm -r backbone-http -r backbone -r async -r knockback > client-bundle.js
 ```
 
 Watch the CoffeeScript

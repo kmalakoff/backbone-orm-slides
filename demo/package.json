@@ -17,17 +17,17 @@
   },
   "dependencies": {
     "coffee-script": "*",
-    "express": "~3.4.4",
+    "express": "3.3.x",
     "nodemon": "*",
+
     "backbone-orm": "*",
     "backbone-sql": "*",
     "pg": "*",
     "backbone-mongo": "*",
     "backbone-http": "*",
     "backbone-rest": "*",
-    "underscore": "*",
-    "backbone": "*",
     "async": "*",
+
     "knockout": "*",
     "knockback": "*",
     "lodash": "*"
