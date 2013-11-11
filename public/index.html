@@ -82,6 +82,106 @@
           </div>
         </section>
         <section>
+          <h1>Design Goals</h1>
+          <h3>AKA: biting the bullet</h3>
+        </section>
+        <section>
+          <h3>MongoDB inspired query langauge</h3>
+          <h3 class="fragment">Rails / Django style query chaining</h3>
+          <h3 class="fragment">Backbone.js Models and Collections</h3>
+        </section>
+        <section>
+          <h2>Node-y callbacks everywhere</h2>
+          <div class="fragment">
+            <h2>That consistent API</h2>
+            <h3>ACross client and server</h3>
+          </div>
+          <div class="fragment">
+            <h2>Trivial REST API generation</h2>
+            <h3>With super flexible templates</h3>
+          </div>
+        </section>
+        <!--section-->
+        <!--  h1 The Basics-->
+        <!--  .left-->
+        <!--    p Provide an intuitive query langauge: inspired by the MongoDB gold standard-->
+        <!--    p Must be Node-y: callback-based queries and promise-based cursors - we got'em!-->
+        <!--    p Low learning curve: consistent API across Browser and Node.js-->
+        <!--    p Backbone.js Model and Collection compatible with built-in relationships: we use Knockback.js-->
+        <!--    p Trivial JSON API generation: raw JSON or DSL to customize-->
+        <section>
+          <h1>Above and Beyond</h1>
+          <!--.fragment.left-->
+          <!--  p URL-based query syntax: debug JSON queries on the search bar-->
+          <!--  p Both JSON and Model interfaces for JSON-only APIs when a full relation, model-based ORM is overkill-->
+          <!--  p Batch-based, browser-side processing of server models: wanna generate a report in the Browser?-->
+          <!--  p Node.js-based stream support: wanna stream to JSON from Postgres?-->
+          <!--  p Relationships in MongoDB: well, it came for free-->
+          <!--  p In Memory store: great for config file queries-->
+        </section>
+        <section>
+          <h1>The Results</h1>
+          <h3>AKA: ORMs are harder than they look</h3>
+        </section>
+        <section>
+          <h1>We are happy campers!</h1>
+          <h2 class="fragment">...now</h2>
+          <!--.left-->
+          <!--  p We seamlessly transition between developing for the Browser and Node.js (and sometimes both!)-->
+          <!--  p We can take advantage of the great extensions and frameworks around Backbone.js-->
+          <!--  p We can mix-and-match databases to choose the best tool for the job-->
+          <!--  p We focus on solving problems not memorizing APIs-->
+        </section>
+        <section>
+          <h1>We are tired campers!</h1>
+          <!--.left-->
+          <!--  p Many long days and late nights filled with epiphanies: "So that's why A/B/C did X/Y/Z"-->
+        </section>
+        <section>
+          <h1>We are thankful campers!</h1>
+          <h3>Thank you:</h3>
+          <p>Backbone.js for a great Model layer</p>
+          <p>Knex for a great SQL-mulivariant driver</p>
+          <p>MongoDB for an amazing query syntax</p>
+          <p>CouchDB for url-based queries</p>
+          <p>Rails and Django for mature ORMs</p>
+        </section>
+        <section>
+          <h1>We are open sourcing campers!</h1>
+          <table class="left">
+            <tr>
+              <td>
+                <h4>backbone-orm</h4>
+              </td>
+              <td>base library that extends Backbone.js and provides an in-memory store</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>backbone-http</h4>
+              </td>
+              <td>an HTTP interface for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>backbone-rest</h4>
+              </td>
+              <td>a RESTful controller for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>backbone-mongo</h4>
+              </td>
+              <td>MongoDB storage for BackboneORM</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>backbone-sql</h4>
+              </td>
+              <td>PostgreSQL, MySQL, and SQLite3 storage for BackboneORM</td>
+            </tr>
+          </table>
+        </section>
+        <section>
           <h3>Let's see some cool stuff</h3>
         </section>
         <section class="invert"><a href="http://vidigami.github.io/backbone-orm"><img src="./images/backbone-orm-logo-large.png" class="plain"></a>

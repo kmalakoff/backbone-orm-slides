@@ -8,5 +8,6 @@ body.invert h1,body.invert h2,body.invert h3,body.invert h4,body.invert h5,body.
 .reveal section .left{text-align:left}
 .reveal section .huge{font-size:5em}
 .reveal section table.left tr td:first-child{min-width:200px}
+.reveal section table.left tr td:last-child{font-size:.8em}
 .reveal section h1.fragment.zoom-in{height:0;overflow:hidden;}
 .reveal section h1.fragment.zoom-in.visible{height:240px}
