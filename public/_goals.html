@@ -8,12 +8,7 @@
   <pre class="fragment zoom-in"><code class="language-coffeescript">
       Project.find {name: {$ne: 'Bob'}}, (err, models) ->
       </code></pre>
-</section>
-<section>
-  <h3>Rails / Django style query chaining</h3>
-  <pre class="fragment zoom-in"><code class="language-coffeescript">
-      Project.cursor().limit(3).toModels (err, models) ->
-      </code></pre>
+  <!-- Designed for JavaScript first, we consider this the gold standard of query syntaxs in JS-->
 </section>
 <section>
   <h3>Fully Compatible with Backbone.js, but with Relationships!</h3>
@@ -30,6 +25,12 @@
           tasks: -> ['hasMany', Tasks]
         sync: require('backbone-orm')(Project)
         </code></pre>
+</section>
+<section>
+  <h3>Rails / Django style query chaining</h3>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.cursor().limit(3).toModels (err, models) ->
+      </code></pre>
 </section>
 <section>
   <h2>Trivial REST API generation</h2>
@@ -61,15 +62,13 @@
 <section>
   <h2>Node-y callbacks everywhere</h2>
   <pre class="fragment zoom-in"><code class="language-coffeescript">
-      project.save (err) ->
-      project.destroy (err) ->
+      Project.find {name: 'Bob'}, (err, project) ->
       
-      Project.find {name: {$ne: 'Bob'}}, (err, models) ->
-      Project.cursor().limit(3).toModels (err, models) ->
-      </code></pre>
+        project.get 'tasks', (err, tasks) ->
+        </code></pre>
   <div class="fragment">
     <h2>That consistent API</h2>
-    <h4>ACross client and server</h4>
+    <h4>Across client and server</h4>
   </div>
 </section>
 <!--section-->
@@ -96,19 +95,19 @@
       </code></pre>
 </section>
 <section>
-  <h2>Iterate through a server database in the Browser</h2>
-  <pre class="fragment zoom-in"><code class="language-coffeescript">
-      Project.each {created_at: {$lte: new Date()}},
-        ((model, callback) -> callback()),
-        (err) ->
-        </code></pre>
-</section>
-<section>
   <h2>Node.js streams</h2>
   <pre class="fragment zoom-in"><code class="language-coffeescript">
       Project.stream({created_at: {$lte: new Date()}})
         .pipe(histogram)
         .on 'finish', ->
+        </code></pre>
+</section>
+<section>
+  <h2>Iterate through a server database in the Browser</h2>
+  <pre class="fragment zoom-in"><code class="language-coffeescript">
+      Project.each {created_at: {$lte: new Date()}},
+        ((model, callback) -> callback()),
+        (err) ->
         </code></pre>
 </section>
 <section>

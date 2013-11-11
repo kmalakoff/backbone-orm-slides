@@ -54,6 +54,7 @@
           <h2>"JavaScript Everywhere"</h2>
           <h3>Let's do that</h3>
           <h3>With a<strong>&nbsp;consistent&nbsp;</strong>API</h3>
+          <!-- Let's make our lives easy-->
         </section>
         <section>
           <h1>Backbone-ORM</h1>
@@ -84,6 +85,7 @@
           <div class="fragment"><img src="./images/meme.png">
             <h3>(don't hate us)</h3>
           </div>
+          <!-- we provide everything in JavaScript, don't worry-->
         </section>
         <section class="invert">
           <h1>Design Goals</h1>
@@ -94,12 +96,7 @@
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.find {name: {$ne: 'Bob'}}, (err, models) ->
               </code></pre>
-        </section>
-        <section>
-          <h3>Rails / Django style query chaining</h3>
-          <pre class="fragment zoom-in"><code class="language-coffeescript">
-              Project.cursor().limit(3).toModels (err, models) ->
-              </code></pre>
+          <!-- Designed for JavaScript first, we consider this the gold standard of query syntaxs in JS-->
         </section>
         <section>
           <h3>Fully Compatible with Backbone.js, but with Relationships!</h3>
@@ -116,6 +113,12 @@
                   tasks: -> ['hasMany', Tasks]
                 sync: require('backbone-orm')(Project)
                 </code></pre>
+        </section>
+        <section>
+          <h3>Rails / Django style query chaining</h3>
+          <pre class="fragment zoom-in"><code class="language-coffeescript">
+              Project.cursor().limit(3).toModels (err, models) ->
+              </code></pre>
         </section>
         <section>
           <h2>Trivial REST API generation</h2>
@@ -147,15 +150,13 @@
         <section>
           <h2>Node-y callbacks everywhere</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
-              project.save (err) ->
-              project.destroy (err) ->
+              Project.find {name: 'Bob'}, (err, project) ->
               
-              Project.find {name: {$ne: 'Bob'}}, (err, models) ->
-              Project.cursor().limit(3).toModels (err, models) ->
-              </code></pre>
+                project.get 'tasks', (err, tasks) ->
+                </code></pre>
           <div class="fragment">
             <h2>That consistent API</h2>
-            <h4>ACross client and server</h4>
+            <h4>Across client and server</h4>
           </div>
         </section>
         <!--section-->
@@ -182,19 +183,19 @@
               </code></pre>
         </section>
         <section>
-          <h2>Iterate through a server database in the Browser</h2>
-          <pre class="fragment zoom-in"><code class="language-coffeescript">
-              Project.each {created_at: {$lte: new Date()}},
-                ((model, callback) -> callback()),
-                (err) ->
-                </code></pre>
-        </section>
-        <section>
           <h2>Node.js streams</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.stream({created_at: {$lte: new Date()}})
                 .pipe(histogram)
                 .on 'finish', ->
+                </code></pre>
+        </section>
+        <section>
+          <h2>Iterate through a server database in the Browser</h2>
+          <pre class="fragment zoom-in"><code class="language-coffeescript">
+              Project.each {created_at: {$lte: new Date()}},
+                ((model, callback) -> callback()),
+                (err) ->
                 </code></pre>
         </section>
         <section>
@@ -244,15 +245,15 @@
             </tr>
             <tr>
               <td>
-                <h4>backbone-http</h4>
-              </td>
-              <td>An HTTP interface</td>
-            </tr>
-            <tr>
-              <td>
                 <h4>backbone-rest</h4>
               </td>
               <td>A RESTful controller</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>backbone-http</h4>
+              </td>
+              <td>An HTTP interface</td>
             </tr>
             <tr>
               <td>
