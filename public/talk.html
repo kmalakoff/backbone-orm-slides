@@ -172,17 +172,17 @@
         <section>
           <h2>URL-based query syntax</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
-              localhost:3000/projects?$limit=100&$offset=1000
+              http://localhost:3000/projects?$limit=100&$offset=1000
               </code></pre>
         </section>
         <section>
-          <h2>At the metal, JSON-only interface</h2>
+          <h2>Raw JSON interface</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.cursor().limit(3).toJSON (err, json) ->
               </code></pre>
         </section>
         <section>
-          <h2>Iterate through a database in the Browser</h2>
+          <h2>Iterate through a server database in the Browser</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.each {created_at: {$lte: new Date()}},
                 ((model, callback) -> callback()),
@@ -190,7 +190,7 @@
                 </code></pre>
         </section>
         <section>
-          <h2>Node.js stream support</h2>
+          <h2>Node.js streams</h2>
           <pre class="fragment zoom-in"><code class="language-coffeescript">
               Project.stream({created_at: {$lte: new Date()}})
                 .pipe(histogram)
