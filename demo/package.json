@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/vidigami/backbone-orm-slides.git"
+    "url": "https://github.com/vidigami/backbone-orm-slides.git"
   },
   "scripts": {
     "start": "nodemon -w app.coffee app.coffee"
